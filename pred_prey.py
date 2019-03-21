@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 21 09:44:47 2019
+
+@author: Aron
+"""
+
+import math
+import random
+
+class agent:
+	def  __init__(self, agentType, p, q):
+		self.predOrPrey = agentType
+		if agentType == 'pred':
+			self.__probCapture = p
+			self.__preyEaten = 0
+			self.__reproduced = 0
+			self.__totalEaten = 0
+            self.__reproduceRate = None
+			self.__alive = True
+		else:
+			self.__probCapture = None
+            self.__preyEaten = None
+            self.__reproduced = None
+            self.__totalEaten = None
+			self.__reproduceRate = q
+			self.__alive = True
+	#define functions to call each piece of information in the class
+	
+	def getCapture(self):
+		#Return the probability for capturing prey
+		return self.__probCapture
+	
+	def getPreyEaten(self):
+		#return the number of prey eaten since reproducing 
+		return self.__preyEaten
+
+	def getReproduced(self):
+		#returns the number of times the agent has reproduced
+		return self.__reproduced
+
+	def getTotalEaten(self):
+		#returns the total amount of prey eaten
+		return self.__totalEaten
+
+	def getEscape(self):
+		#returns the probability of the prey escaping
+		return self.__probEscape
+
+	def getReproductionRate(self):
+		#return the rate of the prey reproducing
+		return self.__reproduceRate
+		
+	def getAlive(self):
+		#returns wether the agent is alive or dead (True/False)
+		return self.__alive
+
+class PredPreyModel:
+	def __init__(self):
+		#initialize the model using the below parameters.
+		self.__generations = 5000
+
+		#specify the number of each agent
+		self.__numberOfPrey = 1000
+		self.__numberofPred = 100
+		
+		#create list to track number of predators and prey
+		#possibly do this a different way
+		self.__countPred = []
+		self.__countPrey = []
+		
